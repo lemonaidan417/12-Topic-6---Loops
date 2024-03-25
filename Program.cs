@@ -19,26 +19,39 @@
             Console.Write("Please give me a maximum value: ");
             maxValue = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine();
-            Console.WriteLine("Now, please give me a number between the two previous values: ");
+            Console.WriteLine($"Now, please give me a whole number between {minValue} and {maxValue}: ");
             betweenValue = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine();
-            while (minValue > betweenValue && maxValue < betweenValue)
+            while (minValue <= betweenValue || maxValue >= betweenValue)
             {
-                Console.WriteLine("That number isn't between the previous values, you should know that.");
+                Console.WriteLine($"That number isn't between {minValue} and {maxValue}, you should know that.");
                 Console.Write("Try again: ");
                 betweenValue = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine();
             }
+            Console.WriteLine($"Good job! {betweenValue} is between {minValue} and {maxValue}.");
         }
 
         public static void percentPassing()
         {
+            List <int> gradeList = new List <int>();
+            int userGradeInput;
+            bool done = false;
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine();
-
+            Console.WriteLine("Welcome to Percent Passing!");
+            Console.WriteLine();
+            Console.WriteLine("Please input the grades that you would like analyzed. After each number, " +
+                "please press Enter. When you are done, please  type 'd' and press Enter.");
+            while (done != true)
+            {
+                userGradeInput = Convert.ToInt32(Console.ReadLine());
+                gradeList.Add(userGradeInput);
+            }
         }
         public static void oddSum()
         {
@@ -86,6 +99,9 @@
                 Console.WriteLine();
                 Console.WriteLine("1 - Prompter");
                 Console.WriteLine("2 - Percent Passing");
+                Console.WriteLine("3 - Odd Sum");
+                Console.WriteLine("4 - Random Numbers");
+                Console.WriteLine("5 - Dice Game");
                 Console.WriteLine("Q - Quit");
                 Console.WriteLine();
                 choice = Console.ReadLine().ToLower().Trim();
@@ -97,6 +113,7 @@
                     Console.WriteLine("You chose option 1 - Prompter");
                     prompter();
                     Console.ReadLine();
+                    done = true;
                 }
                 else if (choice == "2")
                 {
@@ -104,6 +121,7 @@
                     Console.WriteLine("You chose option 2 - Percent Passing");
                     percentPassing();
                     Console.ReadLine();
+                    done = true;
                 }
                 else if (choice == "3")
                 {
@@ -111,6 +129,7 @@
                     Console.WriteLine("You chose option 3 - Odd Sum");
                     oddSum();
                     Console.ReadLine();
+                    done = true;
                 }
                 else if (choice == "4")
                 {
@@ -118,6 +137,7 @@
                     Console.WriteLine("You chose option 4 - Random Numbers");
                     randomNumbers();
                     Console.ReadLine();
+                    done = true;
                 }
                 else if (choice == "5")
                 {
@@ -125,6 +145,7 @@
                     Console.WriteLine("You chose option 5 - Dice Game");
                     diceGame();
                     Console.ReadLine();
+                    done = true;
                 }
                 else if (choice == "q")
                 {
