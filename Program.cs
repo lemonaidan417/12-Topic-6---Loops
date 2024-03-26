@@ -49,6 +49,7 @@ namespace _12_Topic_6___Loops
             Console.WriteLine();
             Console.WriteLine("Please input the grades that you would like analyzed. After each number, " +
                 "please press Enter. When you are done, please  type 'q' and press Enter.");
+            Console.WriteLine();
             while (!done)
             {
                 if (Int32.TryParse(Console.ReadLine(), out userGradeInput))
