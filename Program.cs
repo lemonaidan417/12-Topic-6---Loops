@@ -52,19 +52,58 @@ namespace _12_Topic_6___Loops
             Console.WriteLine();
             while (!done)
             {
-                if (Int32.TryParse(Console.ReadLine(), out userGradeInput))
-                {
-                    userGradeInput = int.Parse(Console.ReadLine());
-                    gradeList.Add(userGradeInput);
-                }
-                else if (!Int32.TryParse(Console.ReadLine(), out userGradeInput))
+                if (!Int32.TryParse(Console.ReadLine(), out userGradeInput))
                 {
                     done = true;
                 }
+                else if (Int32.TryParse(Console.ReadLine(), out userGradeInput))
+                {
+                    userGradeInput = Convert.ToInt32(Console.ReadLine());
+                    gradeList.Add(Convert.ToInt32(userGradeInput));
+                }
             }
+
+            int n;
+            int pg = 0;
+            int x = 1;
+            int index = 0;
+            string rep;
+
+            Console.WriteLine("Enter numbers, press n to stop:");
+
+
+
+            while (true)
+            {
+
+                n = Convert.ToInt32(Console.ReadLine());
+                rep = (Console.ReadLine().ToLower());
+
+                if (n > pg)
+                {
+                    pg = n;
+                    index = x;
+
+                }
+
+                else if (rep == "n")
+                {
+                    break;   // Will work only if largest number is first. 
+
+                }
+                x++;
+
+
+            }
+
+
+            Console.WriteLine("Largest number is:  {0}  ", pg);
+            Console.WriteLine("Position in line : {0}", index);
+
+
             int numOfGrades = gradeList.Count;
             Console.WriteLine($"You entered {numOfGrades} grades.");
-            Console.WriteLine("Here are the grades you entered: ");
+            Console.WriteLine("Here are the grades you entered:");
             for (int i = 0; i < numOfGrades; i++)
             {
                 Console.WriteLine(gradeList[i]);
