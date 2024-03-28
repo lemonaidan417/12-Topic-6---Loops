@@ -37,7 +37,9 @@ namespace _12_Topic_6___Loops
         public static void percentPassing()
         {
             List <int> gradeList = new List <int>();
-            int userGradeInput;
+            double grade;
+            int pg = 0;
+            string gradeInput;
             bool done = false;
             Console.WriteLine();
             Console.WriteLine();
@@ -47,58 +49,32 @@ namespace _12_Topic_6___Loops
             Console.WriteLine();
             Console.WriteLine("Welcome to Percent Passing!");
             Console.WriteLine();
-            Console.WriteLine("Please input the grades that you would like analyzed. After each number, " +
+            Console.WriteLine("Please input the grades that you would like analyzed in a descending order. \n After each number, " +
                 "please press Enter. When you are done, please  type 'q' and press Enter.");
             Console.WriteLine();
+
             while (!done)
             {
-                if (!Int32.TryParse(Console.ReadLine(), out userGradeInput))
+                Console.WriteLine("Enter the next grade or 'q' o quit");
+                gradeInput = Console.ReadLine().ToLower().Trim();
+               
+
+                if (gradeInput == "q")
                 {
-                    done = true;
+                    done = true; // Will only work if largest number is first
                 }
-                else if (Int32.TryParse(Console.ReadLine(), out userGradeInput))
+                else
                 {
-                    userGradeInput = Convert.ToInt32(Console.ReadLine());
-                    gradeList.Add(Convert.ToInt32(userGradeInput));
+                    if (Double.TryParse(gradeInput, out grade))
+                    {
+                        
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid grade");
+                    }
                 }
             }
-
-            int n;
-            int pg = 0;
-            int x = 1;
-            int index = 0;
-            string rep;
-
-            Console.WriteLine("Enter numbers, press n to stop:");
-
-
-
-            while (true)
-            {
-
-                n = Convert.ToInt32(Console.ReadLine());
-                rep = (Console.ReadLine().ToLower());
-
-                if (n > pg)
-                {
-                    pg = n;
-                    index = x;
-
-                }
-
-                else if (rep == "n")
-                {
-                    break;   // Will work only if largest number is first. 
-
-                }
-                x++;
-
-
-            }
-
-
-            Console.WriteLine("Largest number is:  {0}  ", pg);
-            Console.WriteLine("Position in line : {0}", index);
 
 
             int numOfGrades = gradeList.Count;
