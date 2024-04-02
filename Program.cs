@@ -33,13 +33,12 @@ namespace _12_Topic_6___Loops
             }
             Console.WriteLine($"Good job! {betweenValue} is between {minValue} and {maxValue}.");
         }
-
         public static void percentPassing()
         {
-            List <int> gradeList = new List <int>();
+            List <double> gradeList = new List <double>();
             double grade;
-            int pg = 0;
             string gradeInput;
+            double gradesAbove70 = 0;
             bool done = false;
             Console.WriteLine();
             Console.WriteLine();
@@ -50,16 +49,14 @@ namespace _12_Topic_6___Loops
             Console.WriteLine("Welcome to Percent Passing!");
             Console.WriteLine();
             Console.WriteLine("Please input the grades that you would like analyzed in a descending order. \n After each number, " +
-                "please press Enter. When you are done, please  type 'q' and press Enter.");
+                "please press Enter. When you are done, please  type 'd' and press Enter.");
             Console.WriteLine();
 
             while (!done)
             {
-                Console.WriteLine("Enter the next grade or 'q' o quit");
+                Console.WriteLine("Enter the next grade or 'd' to quit");
                 gradeInput = Console.ReadLine().ToLower().Trim();
-               
-
-                if (gradeInput == "q")
+                if (gradeInput == "d")
                 {
                     done = true; // Will only work if largest number is first
                 }
@@ -67,7 +64,7 @@ namespace _12_Topic_6___Loops
                 {
                     if (Double.TryParse(gradeInput, out grade))
                     {
-                        
+                        gradeList.Add(grade);
                     }
                     else
                     {
@@ -75,25 +72,53 @@ namespace _12_Topic_6___Loops
                     }
                 }
             }
-
-
+            Console.WriteLine();
             int numOfGrades = gradeList.Count;
             Console.WriteLine($"You entered {numOfGrades} grades.");
+            Console.WriteLine();
             Console.WriteLine("Here are the grades you entered:");
             for (int i = 0; i < numOfGrades; i++)
             {
                 Console.WriteLine(gradeList[i]);
+                if (gradeList[i] > 70)
+                {
+                    gradesAbove70++;
+                }
             }
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine($"{(Math.Round(gradesAbove70 / numOfGrades) * 100), 1}% of the grades entered are above 70%");
         }
         public static void oddSum()
         {
+            int numUser, oddSum = 0;
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine();
-
+            Console.WriteLine("Welcome to Odd Sum!");
+            Console.WriteLine();
+            Console.WriteLine("Please give me an odd number (1, 3, 5, etc). \nI will then sum the odd numbers from 1 to that number.");
+            Console.WriteLine();
+            Console.Write("Enter odd number: ");
+            numUser = Convert.ToInt32(Console.ReadLine());
+            for (int i = 1; i < (numUser + 1); i++)
+            {
+                if (i % 2 != 0) // If odd
+                {
+                    oddSum = numUser * ((numUser + 1) / 2);
+                    if (i != numUser)
+                    {
+                        Console.Write($"{i} + ");
+                    }
+                    else if (i == numUser)
+                    {
+                        Console.Write($"{i} = {oddSum}");
+                    }
+                }
+            }
         }
         public static void randomNumbers()
         {
@@ -279,7 +304,7 @@ namespace _12_Topic_6___Loops
                 Console.WriteLine("3 - Odd Sum");
                 Console.WriteLine("4 - Random Numbers");
                 Console.WriteLine("5 - Dice Game");
-                Console.WriteLine("Q - Quit");
+                Console.WriteLine("q - Quit");
                 Console.WriteLine();
                 choice = Console.ReadLine().ToLower().Trim();
                 Console.WriteLine();
